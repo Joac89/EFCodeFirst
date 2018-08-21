@@ -1,0 +1,154 @@
+﻿body {
+    color: #202020;
+    font-size: 16px;
+}
+
+.container-ef {
+    padding: 20px;
+}
+
+.form-body {
+    border-radius: 5px;
+    position: relative;
+    padding: 1rem 0 0 0;
+    border: solid #f8f9fa;
+    border-width: .2rem;
+}
+
+.form-color {
+    background-color: #f7f7f7;
+}
+
+.form-border {
+    border: 1px solid #e0e0e0;
+}
+
+.textbox-readonly {
+    border: 1px solid #ced4da;
+    height: calc(2.25rem + 2px);
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    border-radius: 5px;
+    color: #606060;
+    background-color: #f7f7f7;
+}
+
+.title {
+    font-size: 25px;
+    text-transform: uppercase;
+}
+
+.subtitle {
+    font-size: 18px;
+}
+
+.no-padding {
+    padding: 0;
+}
+
+.no-margin {
+    margin: 0;
+}
+
+.control-label {
+    font-weight: 600;
+}
+
+.control-item {
+    padding: 20px;
+    font-size: 40px;
+    color: #fff;
+    text-decoration: none;
+    margin-right: 10px;
+    border-radius: 5px;
+    width: auto;
+    text-align: center;
+    width: 100%
+}
+
+    .control-item:hover {
+        text-decoration: none;
+        color: #fff;
+    }
+
+.hide {
+    display: none;
+}
+
+.show {
+    display: block;
+}
+
+.form-alert {
+    position: fixed;
+    width: 100%;
+    left: 0;
+    bottom: 0;
+    margin: 0;
+    border-radius: 0;
+    z-index: 999;
+}
+
+.separator-right {
+    border-right: 1px solid;
+    border-color: rgba(255,255,255,0.7);
+}
+
+.separator-left {
+    border-left: 1px solid;
+    border-color: rgba(255,255,255,0.7);
+}
+
+.check-update{
+    padding:15px;
+    font-size:14px;
+    margin-bottom:10px;
+}
+
+.check-update > div {
+    background-color: beige;
+    width:15px;
+    height:15px;
+    float:left;
+    margin-top:3px;
+    margin-right:10px;
+    border:1px solid #c0c0c0;
+}
+
+.navbar-dark .navbar-nav .nav-link {
+    color: rgba(255,255,255,0.7);
+}
+
+.field-validation-error span{
+    font-size:14px;
+}
+
+table.dataTable thead .sorting::after,
+table.dataTable thead .sorting_asc::after,
+table.dataTable thead .sorting::before,
+table.dataTable thead .sorting_asc::before {
+    display: none !important;
+}
+
+table.dataTable thead .sorting_desc::after,
+table.dataTable thead .sorting_desc::before {
+    display: none !important;
+}
+
+table.dataTable thead .sorting {
+    background-image: url('../Scripts/dataTables-1.10.18/images/sort_both.png');
+    background-repeat: no-repeat;
+    background-position: center right;
+}
+
+table.dataTable thead .sorting_asc {
+    background-image: url('../Scripts/dataTables-1.10.18/images/sort_asc.png');
+    background-repeat: no-repeat;
+    background-position: center right;
+}
+
+table.dataTable thead .sorting_desc {
+    background-image: url('../Scripts/dataTables-1.10.18/images/sort_desc.png');
+    background-repeat: no-repeat;
+    background-position: center right;
+}

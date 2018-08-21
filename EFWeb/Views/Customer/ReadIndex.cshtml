@@ -1,0 +1,90 @@
+﻿@model IEnumerable<EFWeb.Models.CustomerModel>
+
+@{
+    ViewBag.Title = "ReadIndex";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section script{
+    <script src="~/Scripts/app/script.reader.js"></script>
+}
+
+<div class="container-ef">
+    <div class="row">
+        <div class="col-lg-10 col-md-10 col-sm-10 mx-auto">
+            <div class="title">
+                Listado de usuarios
+            </div>
+            <br />
+            <div>
+                <table class="table table-bordered table-striped" id="table_reader">
+                    <thead>
+                        <tr>
+                            <th>
+                                Id
+                            </th>
+                            <th>
+                                Nombres
+                            </th>
+                            <th>
+                                Direcci&oacute;n
+                            </th>
+                            <th>
+                                Fecha de nacimiento
+                            </th>
+                            <th>
+                                Documento
+                            </th>
+                            <th>
+                                Tipo de documento
+                            </th>
+                            <th>
+                                Lugar de nacimiento
+                            </th>
+                            <th class="no-sort"></th>
+                            <th class="no-sort"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    <strong>@Html.DisplayFor(modelItem => item.Id)</strong>
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Name)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Address)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.BirthDate)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.DocumentId)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.DocumentTypeName)
+                                </td>
+                                <td style="text-transform: capitalize !important">
+                                    @string.Concat(item.CityName, ", ", item.CountryName)
+                                </td>
+                                <td>
+                                    <a href="/Customer/UpdateIndex?id=@item.Id">
+                                        <i class="fas fa-edit text-info"></i>
+                                    </a>
+                                </td>
+                                <td>
+                                    <a href="/Customer/DeleteIndex?id=@item.Id">
+                                        <i class="fas fa-times-circle text-danger"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,140 @@
+﻿@model EFWeb.Models.CustomerModel
+
+@{
+    ViewBag.Title = "UpdateIndex";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section script{
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+    <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+    <script src="~/Scripts/app/script.update.js"></script>
+    <script>
+        function ajaxFormResult(result) {
+            var code = result.Code;
+            var data = result.Data;
+
+            app.resultAjaxMessage("message_result", "form_update", result);
+
+            if (code == 200) {
+                var fields = [
+                    "Name",
+                    "Address",
+                    "BirthDate",
+                    "DocumentId",
+                    "DocumentType",
+                    "CountryId",
+                    "DepartmentId",
+                    "CityId"
+                ];
+
+                for (var i = 0; i < fields.length; ++i) {
+                    if ($("#" + fields[i]).val() != data[fields[i]]) $("#" + fields[i]).attr("style", "background-color:beige");
+                    $("#" + fields[i]).val(data[fields[i]]);
+                }
+            }
+        }
+    </script>
+}
+
+<div id="message_result" class="hide" role="alert">
+    <div style="float:left"></div>
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+
+<div class="container-ef">
+    <div class="row">
+        <div class="col-lg-6 col-md-8 col-md-12 mx-auto">
+            <div class="title">
+                Actualizar usuario
+            </div>
+            <br />
+            <div class="form-body bd-example">
+                @using (Ajax.BeginForm("UpdateResult", null, new AjaxOptions()
+                {
+                    HttpMethod = "PUT",
+                    OnSuccess = "ajaxFormResult"
+                }, new { @id = "form_update" }))
+                {
+                    @Html.AntiForgeryToken()
+                    @Html.ValidationSummary(true)
+
+                    <fieldset>
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                        @Html.HiddenFor(model => model.Id)
+                        <div class="form-group">
+                            <label class="control-label col-md-12">Nombres</label>
+                            <div class="col-md-12">
+                                @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control", @required = "true" } })
+                                @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label col-md-12">Direcci&oacute;n</label>
+                            <div class="col-md-12">
+                                @Html.EditorFor(model => model.Address, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.Address, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label col-md-12">Fecha de nacimiento</label>
+                            <div class="col-md-12">
+                                @Html.EditorFor(model => model.BirthDate, new { htmlAttributes = new { @class = "form-control", @type = "date" } })
+                                @Html.ValidationMessageFor(model => model.BirthDate, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label col-md-12">Documento de identidad</label>
+                            <div class="col-md-12">
+                                @Html.EditorFor(model => model.DocumentId, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.DocumentId, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label col-md-12">Tipo de documento</label>
+                            <div class="col-md-12">
+                                @Html.DropDownListFor(model => model.DocumentType, new SelectList(Model.DocumentTypes, "id", "description", 0), "Seleccione", new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.DocumentType, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label col-md-12">Pa&iacute;s de nacimiento</label>
+                            <div class="col-md-12">
+                                @Html.DropDownListFor(model => model.CountryId, new SelectList(Model.Countries, "id", "description", 0), "Seleccione", new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.CountryId, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-12">Departamento de nacimiento</label>
+                            <div class="col-md-12">
+                                @Html.DropDownListFor(model => model.DepartmentId, new SelectList(Model.Departments, "id", "description", 0), "Seleccione", new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.DepartmentId, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-12">Ciudad de nacimiento</label>
+                            <div class="col-md-12">
+                                @Html.DropDownListFor(model => model.CityId, new SelectList(Model.Cities, "id", "description", 0), "Seleccione", new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.CityId, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-offset-2 col-md-12">
+                                <input type="submit" value="Guardar cambios" class="btn btn-info" />
+                                @Html.ActionLink("Volver", "ReadIndex", "Customer", new { @class = "btn btn-outline-dark" })
+                            </div>
+                        </div>
+                    </fieldset>
+                }
+            </div>
+        </div>
+    </div>
+</div>

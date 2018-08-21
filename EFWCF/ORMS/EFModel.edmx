@@ -1,0 +1,198 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="EF_DataBaseModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <Function Name="USP_CUSTOMER_CREATE" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="name" Type="nvarchar" Mode="In" />
+          <Parameter Name="address" Type="nvarchar" Mode="In" />
+          <Parameter Name="birthdate" Type="date" Mode="In" />
+          <Parameter Name="documentid" Type="nvarchar" Mode="In" />
+          <Parameter Name="documenttypeid" Type="int" Mode="In" />
+          <Parameter Name="cityid" Type="bigint" Mode="In" />
+          <Parameter Name="id" Type="bigint" Mode="InOut" />
+        </Function>
+        <Function Name="USP_CUSTOMER_DELETE" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="bigint" Mode="In" />
+        </Function>
+        <Function Name="USP_CUSTOMER_READ" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="bigint" Mode="In" />
+          <Parameter Name="name" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="USP_CUSTOMER_UPDATE" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="bigint" Mode="In" />
+          <Parameter Name="name" Type="nvarchar" Mode="In" />
+          <Parameter Name="address" Type="nvarchar" Mode="In" />
+          <Parameter Name="birthdate" Type="date" Mode="In" />
+          <Parameter Name="documentid" Type="nvarchar" Mode="In" />
+          <Parameter Name="documenttypeid" Type="int" Mode="In" />
+          <Parameter Name="cityid" Type="bigint" Mode="In" />
+        </Function>
+        <Function Name="USP_GET_CITY" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="departmentid" Type="bigint" Mode="In" />
+          <Parameter Name="countryid" Type="bigint" Mode="In" />
+        </Function>
+        <Function Name="USP_GET_COUNTRY" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="USP_GET_DEPARTMENT" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="countryid" Type="bigint" Mode="In" />
+        </Function>
+        <Function Name="USP_GET_DOCUMENT_TYPES" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <EntityContainer Name="EF_DataBaseModelStoreContainer" />
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="EF_DataBaseModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="EF_DataBaseEntities" annotation:LazyLoadingEnabled="true" >
+          <FunctionImport Name="USP_CUSTOMER_CREATE">
+            <Parameter Name="name" Mode="In" Type="String" />
+            <Parameter Name="address" Mode="In" Type="String" />
+            <Parameter Name="birthdate" Mode="In" Type="DateTime" />
+            <Parameter Name="documentid" Mode="In" Type="String" />
+            <Parameter Name="documenttypeid" Mode="In" Type="Int32" />
+            <Parameter Name="cityid" Mode="In" Type="Int64" />
+            <Parameter Name="id" Mode="InOut" Type="Int64" />
+          </FunctionImport>
+          <FunctionImport Name="USP_CUSTOMER_DELETE">
+            <Parameter Name="id" Mode="In" Type="Int64" />
+          </FunctionImport>
+          <FunctionImport Name="USP_CUSTOMER_READ" ReturnType="Collection(EF_DataBaseModel.USP_CUSTOMER_READ_Result)">
+            <Parameter Name="id" Mode="In" Type="Int64" />
+            <Parameter Name="name" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="USP_CUSTOMER_UPDATE">
+            <Parameter Name="id" Mode="In" Type="Int64" />
+            <Parameter Name="name" Mode="In" Type="String" />
+            <Parameter Name="address" Mode="In" Type="String" />
+            <Parameter Name="birthdate" Mode="In" Type="DateTime" />
+            <Parameter Name="documentid" Mode="In" Type="String" />
+            <Parameter Name="documenttypeid" Mode="In" Type="Int32" />
+            <Parameter Name="cityid" Mode="In" Type="Int64" />
+          </FunctionImport>
+          <FunctionImport Name="USP_GET_CITY" ReturnType="Collection(EF_DataBaseModel.USP_GET_CITY_Result)">
+            <Parameter Name="departmentid" Mode="In" Type="Int64" />
+            <Parameter Name="countryid" Mode="In" Type="Int64" />
+          </FunctionImport>
+          <FunctionImport Name="USP_GET_COUNTRY" ReturnType="Collection(EF_DataBaseModel.USP_GET_COUNTRY_Result)" />
+          <FunctionImport Name="USP_GET_DEPARTMENT" ReturnType="Collection(EF_DataBaseModel.USP_GET_DEPARTMENT_Result)">
+            <Parameter Name="countryid" Mode="In" Type="Int64" />
+          </FunctionImport>
+          <FunctionImport Name="USP_GET_DOCUMENT_TYPES" ReturnType="Collection(EF_DataBaseModel.USP_GET_DOCUMENT_TYPES_Result)" />
+        </EntityContainer>
+        <ComplexType Name="USP_CUSTOMER_READ_Result">
+          <Property Type="Int64" Name="CustomerId" Nullable="false" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="500" />
+          <Property Type="String" Name="Address" Nullable="true" MaxLength="100" />
+          <Property Type="DateTime" Name="BirthDate" Nullable="false" />
+          <Property Type="String" Name="DocumentId" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="DocumentType" Nullable="false" />
+          <Property Type="String" Name="DocumentTypeName" Nullable="false" MaxLength="50" />
+          <Property Type="Int64" Name="CityId" Nullable="false" />
+          <Property Type="String" Name="CityName" Nullable="false" MaxLength="50" />
+          <Property Type="Int64" Name="DepartmentId" Nullable="false" />
+          <Property Type="String" Name="DepartmentName" Nullable="false" MaxLength="50" />
+          <Property Type="Int64" Name="CountryId" Nullable="false" />
+          <Property Type="String" Name="CountryName" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="USP_GET_CITY_Result">
+          <Property Type="Int64" Name="CityId" Nullable="false" />
+          <Property Type="String" Name="Description" Nullable="false" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="USP_GET_COUNTRY_Result">
+          <Property Type="Int64" Name="CountryId" Nullable="false" />
+          <Property Type="String" Name="Description" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="USP_GET_DEPARTMENT_Result">
+          <Property Type="Int64" Name="DepartmentId" Nullable="false" />
+          <Property Type="String" Name="Description" Nullable="false" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="USP_GET_DOCUMENT_TYPES_Result">
+          <Property Type="Int32" Name="DocumentTypeId" Nullable="false" />
+          <Property Type="String" Name="Description" Nullable="false" MaxLength="50" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="EF_DataBaseModelStoreContainer" CdmEntityContainer="EF_DataBaseEntities" >
+          <FunctionImportMapping FunctionImportName="USP_CUSTOMER_CREATE" FunctionName="EF_DataBaseModel.Store.USP_CUSTOMER_CREATE" />
+          <FunctionImportMapping FunctionImportName="USP_CUSTOMER_DELETE" FunctionName="EF_DataBaseModel.Store.USP_CUSTOMER_DELETE" />
+          <FunctionImportMapping FunctionImportName="USP_CUSTOMER_READ" FunctionName="EF_DataBaseModel.Store.USP_CUSTOMER_READ">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="EF_DataBaseModel.USP_CUSTOMER_READ_Result">
+                <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="BirthDate" ColumnName="BirthDate" />
+                <ScalarProperty Name="DocumentId" ColumnName="DocumentId" />
+                <ScalarProperty Name="DocumentType" ColumnName="DocumentType" />
+                <ScalarProperty Name="DocumentTypeName" ColumnName="DocumentTypeName" />
+                <ScalarProperty Name="CityId" ColumnName="CityId" />
+                <ScalarProperty Name="CityName" ColumnName="CityName" />
+                <ScalarProperty Name="DepartmentId" ColumnName="DepartmentId" />
+                <ScalarProperty Name="DepartmentName" ColumnName="DepartmentName" />
+                <ScalarProperty Name="CountryId" ColumnName="CountryId" />
+                <ScalarProperty Name="CountryName" ColumnName="CountryName" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="USP_CUSTOMER_UPDATE" FunctionName="EF_DataBaseModel.Store.USP_CUSTOMER_UPDATE" />
+          <FunctionImportMapping FunctionImportName="USP_GET_CITY" FunctionName="EF_DataBaseModel.Store.USP_GET_CITY">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="EF_DataBaseModel.USP_GET_CITY_Result">
+                <ScalarProperty Name="CityId" ColumnName="CityId" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="USP_GET_COUNTRY" FunctionName="EF_DataBaseModel.Store.USP_GET_COUNTRY">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="EF_DataBaseModel.USP_GET_COUNTRY_Result">
+                <ScalarProperty Name="CountryId" ColumnName="CountryId" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="USP_GET_DEPARTMENT" FunctionName="EF_DataBaseModel.Store.USP_GET_DEPARTMENT">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="EF_DataBaseModel.USP_GET_DEPARTMENT_Result">
+                <ScalarProperty Name="DepartmentId" ColumnName="DepartmentId" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="USP_GET_DOCUMENT_TYPES" FunctionName="EF_DataBaseModel.Store.USP_GET_DOCUMENT_TYPES">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="EF_DataBaseModel.USP_GET_DOCUMENT_TYPES_Result">
+                <ScalarProperty Name="DocumentTypeId" ColumnName="DocumentTypeId" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

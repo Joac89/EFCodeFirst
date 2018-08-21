@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/EFCommon" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/EFCommon" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:6002/Customer.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/EFWCF.Contracts" />
+  <xs:complexType name="ResponseBaseOflong">
+    <xs:annotation>
+      <xs:appinfo>
+        <GenericType Name="ResponseBaseOf{0}{#}" Namespace="http://schemas.datacontract.org/2004/07/EFCommon" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
+          <GenericParameter Name="long" Namespace="http://www.w3.org/2001/XMLSchema" />
+        </GenericType>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Code" type="xs:int" />
+      <xs:element minOccurs="0" name="Data" type="xs:long" />
+      <xs:element minOccurs="0" name="Message" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ResponseBaseOflong" nillable="true" type="tns:ResponseBaseOflong" />
+  <xs:complexType name="ResponseBaseOfArrayOfCustomerContract06UNqukR">
+    <xs:annotation>
+      <xs:appinfo>
+        <GenericType Name="ResponseBaseOf{0}{#}" Namespace="http://schemas.datacontract.org/2004/07/EFCommon" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
+          <GenericParameter Name="ArrayOfCustomerContract" Namespace="http://schemas.datacontract.org/2004/07/EFWCF.Contracts" />
+        </GenericType>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Code" type="xs:int" />
+      <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/EFWCF.Contracts" minOccurs="0" name="Data" nillable="true" type="q1:ArrayOfCustomerContract" />
+      <xs:element minOccurs="0" name="Message" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ResponseBaseOfArrayOfCustomerContract06UNqukR" nillable="true" type="tns:ResponseBaseOfArrayOfCustomerContract06UNqukR" />
+  <xs:complexType name="ResponseBaseOfCustomerContract06UNqukR">
+    <xs:annotation>
+      <xs:appinfo>
+        <GenericType Name="ResponseBaseOf{0}{#}" Namespace="http://schemas.datacontract.org/2004/07/EFCommon" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
+          <GenericParameter Name="CustomerContract" Namespace="http://schemas.datacontract.org/2004/07/EFWCF.Contracts" />
+        </GenericType>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Code" type="xs:int" />
+      <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/EFWCF.Contracts" minOccurs="0" name="Data" nillable="true" type="q2:CustomerContract" />
+      <xs:element minOccurs="0" name="Message" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ResponseBaseOfCustomerContract06UNqukR" nillable="true" type="tns:ResponseBaseOfCustomerContract06UNqukR" />
+  <xs:complexType name="ResponseBaseOfboolean">
+    <xs:annotation>
+      <xs:appinfo>
+        <GenericType Name="ResponseBaseOf{0}{#}" Namespace="http://schemas.datacontract.org/2004/07/EFCommon" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
+          <GenericParameter Name="boolean" Namespace="http://www.w3.org/2001/XMLSchema" />
+        </GenericType>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Code" type="xs:int" />
+      <xs:element minOccurs="0" name="Data" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Message" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ResponseBaseOfboolean" nillable="true" type="tns:ResponseBaseOfboolean" />
+</xs:schema>

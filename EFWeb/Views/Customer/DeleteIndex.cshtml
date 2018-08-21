@@ -1,0 +1,149 @@
+﻿@model EFWeb.Models.CustomerModel
+
+@{
+    ViewBag.Title = "DeleteIndex";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section script{
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+    <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+    <script src="~/Scripts/app/script.delete.js"></script>
+    <script>
+        function ajaxFormResult(result) {
+            app.resultAjaxMessage("message_result", "form_delete", result);
+            $("form").attr("class", "hide");
+            $("#delete_end p").append(result.Message);
+            $("#delete_end").attr("class", "show");
+        }
+    </script>
+}
+
+<div id="message_result" class="hide" role="alert">
+    <div style="float:left"></div>
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+
+<div class="container-ef">
+    <div class="row">
+        <div class="col-lg-6 col-md-8 col-md-12 mx-auto">
+            <div class="title">
+                Eliminar usuario
+            </div>
+            <br />
+            <div class="form-body bd-example">
+                <div id="delete_end" class="hide" style="padding: 1rem;">
+                    <p>
+
+                    </p>
+                    @Html.ActionLink("Volver", "ReadIndex", "Customer", new { @class = "btn btn-outline-dark" })
+                </div>
+
+                @using (Ajax.BeginForm("DeleteResult", null, new AjaxOptions()
+                {
+                    InsertionMode = InsertionMode.Replace,
+                    HttpMethod = "DELETE",
+                    OnSuccess = "ajaxFormResult",
+                    OnFailure = "ajaxFormResult",
+                }, new { @id = "form_delete" }))
+                {
+                    @Html.AntiForgeryToken()
+                    @Html.ValidationSummary(true);
+
+                    <fieldset>
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                        @Html.HiddenFor(model => model.Id)
+                        <div class="form-group">
+                            <label class="control-label col-md-12">Id</label>
+                            <div class="col-md-12">
+                                <div class="textbox-readonly">
+                                    @Model.Id
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label col-md-12">Nombres</label>
+                            <div class="col-md-12">
+                                <div class="textbox-readonly">
+                                    @Model.Name
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label col-md-12">Direcci&oacute;n</label>
+                            <div class="col-md-12">
+                                <div class="textbox-readonly">
+                                    @Model.Address
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label col-md-12">Fecha de nacimiento</label>
+                            <div class="col-md-12">
+                                <div class="textbox-readonly">
+                                    @Model.BirthDate
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label col-md-12">Documento de identidad</label>
+                            <div class="col-md-12">
+                                <div class="textbox-readonly">
+                                    @Model.DocumentId
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label col-md-12">Tipo de documento</label>
+                            <div class="col-md-12">
+                                <div class="textbox-readonly">
+                                    @Model.DocumentTypeName
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label col-md-12">Pa&iacute;s de nacimiento</label>
+                            <div class="col-md-12">
+                                <div class="textbox-readonly">
+                                    @Model.CountryName
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-12">Departamento de nacimiento</label>
+                            <div class="col-md-12">
+                                <div class="textbox-readonly">
+                                    @Model.DepartmentName
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-12">Ciudad de nacimiento</label>
+                            <div class="col-md-12">
+                                <div class="textbox-readonly">
+                                    @Model.CityName
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-md-offset-2 col-md-12">
+                                <input type="submit" value="Eliminar" class="btn btn-danger" />
+                                @Html.ActionLink("Volver", "ReadIndex", "Customer", new { @class = "btn btn-outline-dark" })
+                            </div>
+                        </div>
+                    </fieldset>
+                }
+            </div>
+        </div>
+    </div>
+</div>
